@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, FormControl, FormLabel, Heading, Input, Text, Button, Grid, GridItem, Image } from '@chakra-ui/react';
 import axios from 'axios';
+import {Link, useNavigate} from "react-router-dom"
 
 const Register = () => {
 
@@ -10,20 +11,24 @@ const Register = () => {
     password : ""
   })
 
+  const [error, setError] = useState(null);
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setInput(
         prev=>({...prev, [e.target.name] : e.target.value})
     )
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     try{
-      const res = await axios.post("/auth/register", input);
-      console.log(res)
+      await axios.post("http://localhost:8800/backend/auth/register", input);
+      navigate("/login");
     }
     catch(err){
-      console.log(err)
+      setError(err.response.data);
+      console.error(error)
     }
   }
 
@@ -35,7 +40,7 @@ const Register = () => {
               <Image h="100%" src="p1.jpg" borderTopLeftRadius="30px" borderBottomLeftRadius="30px" />
             </GridItem>  
             <GridItem colSpan={3} p="80px">
-                <Flex w="100%" justifyContent="space-evenly" flexDir="column"  h="100%">
+                <Flex w="100%" justifyContent="space-evenly" flexDir="column"  h="100%" gap="15px">
                 <Box>
                     <Heading>Welcome</Heading>
                     <Text color="grey">Welcome. Please enter your details to create account</Text>
@@ -52,9 +57,11 @@ const Register = () => {
                     <FormLabel>Password</FormLabel>
                     <Input type='password' borderColor="grey" name='password' onChange={handleChange} />
                 </FormControl>
+                {error && <Text>Username atau Email telah digunakan</Text>}
                 <Button onClick={handleSubmit}>
                     Sign up
                 </Button>
+                <Text textAlign="center">Sudah punya akun? <Link to="/login">Login</Link> </Text>
                 </Flex>
             </GridItem>
         </Grid>

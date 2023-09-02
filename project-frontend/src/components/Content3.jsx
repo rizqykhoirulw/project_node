@@ -1,5 +1,6 @@
 import { Grid, Card, CardHeader, CardBody, CardFooter, Image, Stack, Text, Divider, Button, ButtonGroup, Heading, Container, Flex} from '@chakra-ui/react';
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Content3 = () => {
   return (
@@ -26,7 +27,7 @@ const Content3 = () => {
                 <Divider />
                 <CardFooter>
                     <Button variant='ghost' colorScheme='blue'mx="auto">
-                        Detail About Tour
+                        <Link to="/single">Detail About Tour</Link>
                     </Button>
 
                 </CardFooter>
@@ -52,7 +53,7 @@ const Content3 = () => {
                 <Divider />
                 <CardFooter>
                     <Button variant='ghost' colorScheme='blue'mx="auto">
-                        Detail About Tour
+                        <Link to="/single">Detail About Tour</Link>
                     </Button>
 
                 </CardFooter>
@@ -78,7 +79,7 @@ const Content3 = () => {
                 <Divider />
                 <CardFooter>
                     <Button variant='ghost' colorScheme='blue'mx="auto">
-                        Detail About Tour
+                        <Link to="/single">Detail About Tour</Link>
                     </Button>
 
                 </CardFooter>
@@ -104,7 +105,7 @@ const Content3 = () => {
                 <Divider />
                 <CardFooter>
                     <Button variant='ghost' colorScheme='blue'mx="auto">
-                        Detail About Tour
+                        <Link to="/single">Detail About Tour</Link>
                     </Button>
 
                 </CardFooter>

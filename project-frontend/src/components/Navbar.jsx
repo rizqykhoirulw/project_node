@@ -35,7 +35,7 @@ const FirstNavbar= () => {
                         Contact Us
                     </Button >
                     <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="white" letterSpacing="1px" border="2px" borderColor="white">
-                        Login
+                        <Link to="/login">Login</Link>
                     </Button>
                 </HStack>
             </Flex>

@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Flex, FormControl, FormLabel, Heading, Input, Text, Button, Grid, GridItem, Checkbox, Image } from '@chakra-ui/react';
-
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const [input, setInput] = useState({
+    username : "",
+    email : "",
+    password : ""
+  })
+
+  const [error, setError] = useState(null);
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setInput(
+        prev=>({...prev, [e.target.name] : e.target.value})
+    )
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try{
+      await axios.post("http://localhost:8800/backend/auth/login", input);
+      navigate("/");
+    }
+    catch(err){
+      setError(err.response.data);
+      console.error(error)
+    }
+  }
+
   return (
     <Flex w="100%" bgColor="blue.100" h="100vh" justifyContent="center" alignItems="center" >
         <Grid w="60%" templateColumns="repeat(5, 1fr)" borderRadius="30px" bgColor="white" m="auto" boxShadow="0 0 10px 1px rgba(0, 0, 0, .1)">
@@ -14,19 +42,20 @@ const Login = () => {
               </Box>
               <FormControl color="black">
                 <FormLabel >Username</FormLabel>
-                <Input type='text' borderColor="grey"/>
+                <Input type='text' borderColor="grey" onChange={handleChange} name='username'/>
               </FormControl>
               <FormControl color="black">
                 <FormLabel>Password</FormLabel>
-                <Input type='password' borderColor="grey"/>
+                <Input type='password' borderColor="grey" onChange={handleChange} name='password'/>
               </FormControl>
               <Flex w="100%" justifyContent="space-between">
                 <Checkbox>Remember for 30 days</Checkbox>
                 <Text fontWeight="bold" cursor="pointer">Forget Password?</Text>
               </Flex>
-              <Button>
+              <Button onClick={handleSubmit}>
                 Sign in
               </Button>
+              <Text textAlign="center">Belum punya akun? <Link to="/register">Register</Link> </Text>
             </Flex>
             {/* <Flex justifyContent="center" alignItems="center" textAlign="center" m="auto" >
                 <Flex w="50%" bgColor="whitesmoke"  p="20px" justifyContent="center" alignItems="center" flexDir="column" gap="20px" borderRadius="20px">
