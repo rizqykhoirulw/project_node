@@ -12,9 +12,7 @@ export const AuthContex = ({children})=>{
     const login = async(input)=>{
         const res = await axios.post("http://localhost:8800/backend/auth/login", input, {withCredentials: true});
         const token = res.data.access_token;
-        
-        console.log("Received token:", token);
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", JSON.stringify({ token }));
         setUserTerkini(res.data);
     }
 

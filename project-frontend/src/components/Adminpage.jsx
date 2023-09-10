@@ -26,14 +26,8 @@ const Adminpage = () => {
 
   const handleDelete = async (id)=> {
     try {
-      const token = JSON.parse(localStorage.getItem("token")).token;
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
-
-
-      await axios.delete(`http://localhost:8800/backend/add/${id}`, {headers});
-
+      console.log(id);
+      await axios.delete(`http://localhost:8800/backend/add/${id}`);
       navigate("/admpg");
     } catch (error) {
       console.log(error)
