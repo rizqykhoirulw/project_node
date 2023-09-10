@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext.js';
 
+
 const Login = () => {
   const [input, setInput] = useState({
     username : "",
@@ -25,7 +26,7 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try{
-      login(input)
+      login(input);
       navigate("/admpg");
       // await axios.post("http://localhost:8800/backend/auth/login", input, {withCredentials: true});
     }

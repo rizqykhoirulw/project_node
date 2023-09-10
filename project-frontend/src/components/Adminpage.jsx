@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Navbar2 from './Navbar2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Adminpage = () => {
   const [posts, setPosts] = useState([]);
@@ -25,9 +26,12 @@ const Adminpage = () => {
   }, [])
 
   const handleDelete = async (id)=> {
+    const token = Cookies.get('access_token');
+      
     try {
-      console.log(id);
-      await axios.delete(`http://localhost:8800/backend/add/${id}`);
+      // console.log(id);
+      console.log(token)
+      // await axios.delete(`http://localhost:8800/backend/add/${id}`);
       navigate("/admpg");
     } catch (error) {
       console.log(error)

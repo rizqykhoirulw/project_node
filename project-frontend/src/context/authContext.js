@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
@@ -11,21 +12,23 @@ export const AuthContex = ({children})=>{
 
     const login = async(input)=>{
         const res = await axios.post("http://localhost:8800/backend/auth/login", input, {withCredentials: true});
-        const token = res.data.access_token;
-        localStorage.setItem("token", JSON.stringify({ token }));
+        const username = res.data.username;
+        Cookies.set('access_token', res.data.token, {expires: 7});
+        console.log(Cookies.get('access_token'))
+        localStorage.setItem("username", JSON.stringify({ username }));
         setUserTerkini(res.data);
     }
 
     const logout = async(input)=>{
         await axios.post("http://localhost:8800/backend/auth/logout");
-        localStorage.removeItem("token")
+        localStorage.removeItem("username")
         setUserTerkini(null);
         
     }
 
-    useEffect(()=>{
-        localStorage.setItem("user", JSON.stringify(userTerkini));
-    }, [userTerkini]);
+    // useEffect(()=>{
+    //     localStorage.setItem("user", JSON.stringify(userTerkini));
+    // }, [userTerkini]);
 
     return(
         <AuthContext.Provider value={{userTerkini, login, logout}}>

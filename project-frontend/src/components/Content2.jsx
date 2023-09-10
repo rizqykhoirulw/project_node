@@ -5,25 +5,22 @@ import { faMountainSun, faUmbrellaBeach, faCalendarDays, faCar, faMoneyBill1Wave
 
 const Content2 = () => {
     const styleCard= {
-        w:"85%", 
-        display:"flex", 
-        flexDir:"column", 
+        w:"100%", 
+        display:"flex",  
         gap:"20px", 
-        m:"auto", 
-        boxShadow:"0 1px 8px 1px rgba(0, 0, 0, .1)", 
-        borderRadius:"20px",  
+        m:"auto",   
         p:"20px"
     };
 
     const styleLogo = {
         alignItems:"center", 
         justifyContent:"center", 
-        borderRadius:"50%", 
+        borderRadius:"50%",
         backgroundColor:"blue.500", 
         m:"auto", 
         p:"40px", 
-        w:"150px", 
-        h:"150px"
+        w:"120px", 
+        h:"120px"
     }
 
     return(
@@ -35,53 +32,65 @@ const Content2 = () => {
                 {/* Service 1 */}
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faMountainSun} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faMountainSun} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>
 
                 {/* Service 2 */}
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faUmbrellaBeach} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faUmbrellaBeach} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>
 
                 {/* Service 3 */}
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faCalendarDays} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faCalendarDays} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nulla in cumque ducimus eius nisi atque ullam molestias dignissimos tempore! </Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>
 
                 {/* Service 4 */}
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faCar} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faCar} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nulla in cumque ducimus eius nisi atque ullam molestias dignissimos tempore! </Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>
 
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faMoneyBill1Wave} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faMoneyBill1Wave} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nulla in cumque ducimus eius nisi atque ullam molestias dignissimos tempore! </Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>  
 
                 <Box sx={styleCard}>
                     <Flex sx={styleLogo}>
-                        <FontAwesomeIcon icon={faCommentDots} color="white" fontSize="60px" />
+                        <FontAwesomeIcon icon={faCommentDots} color="white" fontSize="55px" />
                     </Flex>
-                    <Heading textAlign="center" fontSize="25px">Adventure</Heading>
-                    <Text textAlign="justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nulla in cumque ducimus eius nisi atque ullam molestias dignissimos tempore! </Text>
+                    <Flex flexDir="column" gap="20px">
+                        <Heading fontSize="25px">Adventure</Heading>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore totam odio sunt similique a architecto voluptate maxime nobis dolorum.</Text>
+                    </Flex>
                 </Box>            
             </Grid>
         </Flex>
