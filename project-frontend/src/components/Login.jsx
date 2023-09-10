@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Flex, FormControl, FormLabel, Heading, Input, Text, Button, Grid, GridItem, Checkbox, Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext.js';
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -13,6 +14,8 @@ const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate()
 
+  const { login } = useContext(AuthContext);
+
   const handleChange = (e) => {
     setInput(
         prev=>({...prev, [e.target.name] : e.target.value})
@@ -22,8 +25,9 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try{
-      await axios.post("http://localhost:8800/backend/auth/login", input);
-      navigate("/");
+      login(input)
+      navigate("/admpg");
+      // await axios.post("http://localhost:8800/backend/auth/login", input, {withCredentials: true});
     }
     catch(err){
       setError(err.response.data);

@@ -1,7 +1,11 @@
-import React from 'react'
-import { Box, Button, Flex, HStack, Heading, Spacer } from "@chakra-ui/react";
+import React, { useContext } from 'react'
+import { Box, Button, Flex, HStack, Heading, Spacer, Text } from "@chakra-ui/react";
+import { AuthContext } from '../context/authContext.js';
+import { Link } from 'react-router-dom';
 
 const Navbar2 = () => {
+    const { userTerkini, logout } = useContext(AuthContext)
+
   return (
         <Box 
             position="sticky"
@@ -30,9 +34,27 @@ const Navbar2 = () => {
                     <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s"}} bg="transparent" p="0" m="0" fontSize="18px" fontWeight="semibold" color="black"  letterSpacing="1px">
                         Contact Us
                     </Button >
-                    <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="black" letterSpacing="1px" border="2px" borderColor="black">
-                        Login
-                    </Button>
+
+                    {userTerkini ? (
+                        <Text _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="black" letterSpacing="1px">
+                            {userTerkini?.username}
+                        </Text>
+                    ) : (null)}
+                    
+
+                    {userTerkini ? (
+                        <Link to="/">
+                            <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="black" letterSpacing="1px" border="2px" borderColor="black" onClick={logout}>
+                            Logout
+                            </Button>
+                        </Link>
+                        
+                    ) : (
+                        <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="black" letterSpacing="1px" border="2px" borderColor="black">
+                            <Link to="/login">Login</Link>
+                        </Button>
+                    )}
+                    
                 </HStack>
             </Flex>
         </Box>

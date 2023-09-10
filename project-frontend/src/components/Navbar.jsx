@@ -34,9 +34,9 @@ const FirstNavbar= () => {
                     <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s"}} bg="transparent" p="0" m="0" fontSize="18px" fontWeight="semibold" color="white"  letterSpacing="1px">
                         Contact Us
                     </Button >
-                    <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="white" letterSpacing="1px" border="2px" borderColor="white">
+                    {/* <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="white" letterSpacing="1px" border="2px" borderColor="white">
                         <Link to="/login">Login</Link>
-                    </Button>
+                    </Button> */}
                 </HStack>
             </Flex>
         </Box>
@@ -95,9 +95,7 @@ const SecondNavbar = () => {
                         <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s"}} bg="transparent" p="0" m="0" fontSize="18px" fontWeight="semibold" color="black"  letterSpacing="1px">
                             Contact Us
                         </Button >
-                        <Button _hover={{backgroundColor: "transparent", color:"yellow", transition:"0.4s", borderColor:"yellow"}} bg="transparent" fontSize="18px" fontWeight="semibold" color="black" letterSpacing="1px" border="2px" borderColor="black">
-                            Login
-                        </Button>
+                        
                     </HStack>
                 </Flex>
             </Box>

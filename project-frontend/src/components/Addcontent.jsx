@@ -13,7 +13,11 @@ const Addcontent = () => {
           <Input type="text" borderColor="blackAlpha.300"/>
         </FormControl>
         <FormControl>
-          <FormLabel fontWeight="semibold">Lokasi</FormLabel>
+          <FormLabel fontWeight="semibold">Kode Tour</FormLabel>
+          <Input type="text" borderColor="blackAlpha.300"/>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontWeight="semibold">Tujuan Wisata</FormLabel>
           <Input type="text" borderColor="blackAlpha.300"/>
         </FormControl>
         <FormControl>
@@ -21,11 +25,19 @@ const Addcontent = () => {
           <Input type="text" borderColor="blackAlpha.300"/>
         </FormControl>
         <FormControl>
-        <FormLabel fontWeight="semibold">Foto</FormLabel>
-        <Button as="label" cursor="pointer" htmlFor="fileInput">
-          Tambah Photo
-          <Input type="file" id="fileInput" style={{ display: "none" }} />
-        </Button>
+          <FormLabel fontWeight="semibold">Foto</FormLabel>
+          <Button as="label" cursor="pointer" htmlFor="fileInput">
+            Tambah Photo
+            <Input type="file" id="fileInput" style={{ display: "none" }} />
+          </Button>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontWeight="semibold">Waktu Pick-Up</FormLabel>
+          <Input type="text" borderColor="blackAlpha.300"/>
+        </FormControl>
+        <FormControl>
+          <FormLabel fontWeight="semibold">Durasi</FormLabel>
+          <Input type="text" borderColor="blackAlpha.300"/>
         </FormControl>
         <FormControl>
           <FormLabel fontWeight="semibold">Deskripsi Tour</FormLabel>

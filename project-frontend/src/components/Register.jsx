@@ -31,7 +31,7 @@ const Register = () => {
       console.error(error)
     }
   }
-
+  
     
   return (
     <Flex w="100%" bgColor="blue.100" h="100vh" justifyContent="center" alignItems="center" >
@@ -61,7 +61,7 @@ const Register = () => {
                 <Button onClick={handleSubmit}>
                     Sign up
                 </Button>
-                <Text textAlign="center">Sudah punya akun? <Link to="/login">Login</Link> </Text>
+                 x
                 </Flex>
             </GridItem>
         </Grid>
