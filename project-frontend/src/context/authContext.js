@@ -13,8 +13,7 @@ export const AuthContex = ({children})=>{
     const login = async(input)=>{
         const res = await axios.post("http://localhost:8800/backend/auth/login", input, {withCredentials: true});
         const username = res.data.username;
-        Cookies.set('access_token', res.data.token, {expires: 7});
-        console.log(Cookies.get('access_token'))
+        Cookies.set('access_token', res.data.token, { expires: 7, domain: 'localhost', path: '/', sameSite: 'None', secure: true });
         localStorage.setItem("username", JSON.stringify({ username }));
         setUserTerkini(res.data);
     }

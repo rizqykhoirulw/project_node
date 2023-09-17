@@ -14,6 +14,7 @@ const Navbar2 = () => {
             right={0}
             bg="white"
             boxShadow="lg"
+            zIndex="1"
         > 
             <Flex justifyContent="space-between" p="20px"  alignItems="center" w="100%"> 
                 <Heading color="blue.400" marginLeft="30px">

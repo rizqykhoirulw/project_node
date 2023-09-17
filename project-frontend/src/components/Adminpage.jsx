@@ -15,8 +15,8 @@ const Adminpage = () => {
   useEffect(() => {
     const fetchingData = async ()=>{
       try {
-        
         const res = await axios.get("http://localhost:8800/backend/add");
+        const token = Cookies.get('access_token');
         setPosts(res.data);
       } catch (err) {
         console.log(err)
@@ -27,11 +27,17 @@ const Adminpage = () => {
 
   const handleDelete = async (id)=> {
     const token = Cookies.get('access_token');
-      
+    const requestOptions = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include', 
+    };
     try {
-      // console.log(id);
-      console.log(token)
-      // await axios.delete(`http://localhost:8800/backend/add/${id}`);
+      console.log(id);
+      await axios.delete(`http://localhost:8800/backend/add/${id}`, requestOptions);
       navigate("/admpg");
     } catch (error) {
       console.log(error)

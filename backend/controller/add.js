@@ -13,53 +13,47 @@ export const getPost= () => {
     
 }
 
-export const addPost= () => {
-    
-}
+export const addPost = (req, res) => {
+  const token = req.headers["authorization"];
+  const { judul, kode_tour, deskripsi, tujuan, fasilitas, pick_up, durasi, foto, harga  } = req.body;
+
+  try {
+    if (!token) {
+      throw new Error("Not authenticated");
+    }
+
+    // Kode berlanjut jika token ada
+  } catch (error) {
+    // Tangani error di sini
+    res.status(401).json(error.message);
+    console.error(error);
+  }
+
+  jwt.verify(token, "jwtkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token tidak valid");
+
+    const q = "INSERT INTO content (judul, deskripsi, kode_tour, tujuan, fasilitas, pick_up, durasi, harga, foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    db.query(q, [judul, deskripsi, kode_tour, tujuan, fasilitas, pick_up, durasi, harga, foto], (err, data) => {
+      if (err) return res.status(500).json(err);
+
+      return res.status(201).json({
+        message: "Post created successfully",
+        postId: data.insertId
+      });
+    });
+  });
+};
+
 
 export const updatePost= () => {
     
 }
 
-// export const deletePost = (req, res) => {
-//     const {idcontent} = req.query;
 
-//     const queryCheck = "SELECT * FROM content WHERE idcontent = ?";
-//     db.query(queryCheck, [idcontent], (err, data) => {
-//         if(err){
-//             return res.status(500).json({
-//                 status: 500,
-//                 error: err
-//             })
-//         }
-//         if(!data.length){
-//             return res.status(400).json({
-//                 status: 400,
-//                 error: "content not found"
-//             })
-//         }
-
-//         const query = "DELETE FROM content WHERE idcontent = ?;"
-
-//         db.query(query, [idcontent], (err, data) => {
-//             if (err) {
-//                 return res.status(500).json({
-//                     status: 500,
-//                     error: err
-//                 })
-//             }
-
-//             return res.status(200).json({
-//                 status: 200,
-//                 message: "success delete content"
-//             })
-//         })
-//     })
-// }
 export const deletePost= (req, res) => {
-    const token = req.cookies.access_token;
+  const token = req.headers["authorization"];
     try {
-        console.log(token)
         if (!token) {
           throw new Error("Not authenticated");
         }
@@ -68,6 +62,7 @@ export const deletePost= (req, res) => {
       } catch (error) {
         // Tangani error di sini
         res.status(401).json(error.message);
+        console.error(error);
       }
       
     // if(!token) return res.status(401).json("Not authenticated");
@@ -76,10 +71,14 @@ export const deletePost= (req, res) => {
         if (err) return res.status(403).json("Token tidak valid");
 
         const postId = req.params.id;
-        const q = "DELETE FROM posts WHERE `id` = ?";
+        console.log(postId)
+        const q = "DELETE FROM content WHERE `idcontent` = ?";
 
-        db.query(q, [postId, userInfo.id], (err, data)=>{
-            if(err) return res.status(403).json("Your id not ada");
+        db.query(q, [postId], (err, data)=>{
+            if(err) return res.status(403).json({
+              message: "Your id not ada",
+              data: err.message
+            });
 
             return res.json("Data has been deleted");
         })
